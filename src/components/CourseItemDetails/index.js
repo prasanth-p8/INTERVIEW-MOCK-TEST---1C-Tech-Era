@@ -2,21 +2,6 @@ import {useState, useEffect} from 'react'
 
 import Loader from 'react-loader-spinner'
 
-import {
-  CourseDetailsItemContainer,
-  LoadingViewContainer,
-  FailureViewContainer,
-  FailureViewImage,
-  FailureViewHeading,
-  FailureViewDescription,
-  FailureViewButton,
-  CourseDetailContainer,
-  CourseItemImage,
-  CourseDetailsSubContainer,
-  CourseTitle,
-  CourseContent,
-} from './styledComponents'
-
 const apiStatusConstants = {
   initial: 'INITIAL',
   inProgress: 'IN_PROGRESS',
@@ -63,40 +48,49 @@ const CourseItemDetails = props => {
   }, [id])
 
   const renderLoadingView = () => (
-    <LoadingViewContainer>
+    <div className="loading-view-container" data-testid="loader">
       <Loader type="TailSpin" color="#00BFFF" height={50} weight={50} />
-    </LoadingViewContainer>
+    </div>
   )
 
   const retryCourseDetailsItem = () => {}
 
   const renderFailureView = () => (
-    <FailureViewContainer>
-      <FailureViewImage
+    <div className="failure-view-container">
+      <img
+        className="failure-view-image"
         src="https://assets.ccbp.in/frontend/react-js/tech-era/failure-img.png"
         alt="failure view"
       />
-      <FailureViewHeading>Oops! Something Went Wrong</FailureViewHeading>
-      <FailureViewDescription>
+      <h1 className="failure-view-heading">Oops! Something Went Wrong</h1>
+      <p className="failure-view-description">
         We cannot seem to find the page you are looking for.
-      </FailureViewDescription>
-      <FailureViewButton onClick={retryCourseDetailsItem}>
+      </p>
+      <button
+        type="button"
+        className="failure-view-button"
+        onClick={retryCourseDetailsItem}
+      >
         Retry
-      </FailureViewButton>
-    </FailureViewContainer>
+      </button>
+    </div>
   )
 
   const renderSuccessView = () => {
     const {data} = apiStatus
 
     return (
-      <CourseDetailContainer>
-        <CourseItemImage src={data.imageUrl} alt={data.name} />
-        <CourseDetailsSubContainer>
-          <CourseTitle>{data.name}</CourseTitle>
-          <CourseContent>{data.description}</CourseContent>
-        </CourseDetailsSubContainer>
-      </CourseDetailContainer>
+      <div className="course-detail-container">
+        <img
+          className="course-item-image"
+          src={data.imageUrl}
+          alt={data.name}
+        />
+        <div className="course-details-subContainer">
+          <h1>{data.name}</h1>
+          <p className="course-content">{data.description}</p>
+        </div>
+      </div>
     )
   }
 
@@ -113,11 +107,7 @@ const CourseItemDetails = props => {
     }
   }
 
-  return (
-    <CourseDetailsItemContainer>
-      {renderCourseDetailsItem()}
-    </CourseDetailsItemContainer>
-  )
+  return <div>{renderCourseDetailsItem()}</div>
 }
 
 export default CourseItemDetails

@@ -4,18 +4,6 @@ import Loader from 'react-loader-spinner'
 
 import CourseData from '../CourseData'
 
-import {
-  MainContainer,
-  HomeHeading,
-  LoadingViewContainer,
-  CourseDetailsList,
-  FailureViewContainer,
-  FailureViewImage,
-  FailureViewHeading,
-  FailureViewDescription,
-  FailureViewButton,
-} from './styledComponents'
-
 const apiStatusConstants = {
   initial: 'INITIAL',
   inProgress: 'IN_PROGRESS',
@@ -54,9 +42,9 @@ const Home = () => {
   }, [])
 
   const renderLoadingView = () => (
-    <LoadingViewContainer data-testid="loader">
+    <div className="loading-view-container" data-testid="loader">
       <Loader type="TailSpin" color="#00BFFF" height={50} width={50} />
-    </LoadingViewContainer>
+    </div>
   )
 
   const renderSuccessView = () => {
@@ -64,12 +52,12 @@ const Home = () => {
 
     return (
       <>
-        <HomeHeading>Courses</HomeHeading>
-        <CourseDetailsList>
+        <h1 className="home-heading">Courses</h1>
+        <ul className="course-details-list">
           {data.map(eachCourse => (
             <CourseData key={eachCourse.id} courseDetails={eachCourse} />
           ))}
-        </CourseDetailsList>
+        </ul>
       </>
     )
   }
@@ -77,17 +65,24 @@ const Home = () => {
   const retryCourseDetails = () => {}
 
   const renderFailureView = () => (
-    <FailureViewContainer>
-      <FailureViewImage
+    <div className="failure-view-container">
+      <img
+        className="failure-view-image"
         src="https://assets.ccbp.in/frontend/react-js/tech-era/failure-img.png"
         alt="failure view"
       />
-      <FailureViewHeading>Oops! Something Went Wrong</FailureViewHeading>
-      <FailureViewDescription>
+      <h1 className="failure-view-heading">Oops! Something Went Wrong</h1>
+      <p className="failure-view-description">
         We cannot seem to find the page you are looking for.
-      </FailureViewDescription>
-      <FailureViewButton onClick={retryCourseDetails}>Retry</FailureViewButton>
-    </FailureViewContainer>
+      </p>
+      <button
+        type="button"
+        className="failure-view-button"
+        onClick={retryCourseDetails}
+      >
+        Retry
+      </button>
+    </div>
   )
 
   const renderCourseDetails = () => {
@@ -105,7 +100,7 @@ const Home = () => {
     }
   }
 
-  return <MainContainer>{renderCourseDetails()}</MainContainer>
+  return <div>{renderCourseDetails()}</div>
 }
 
 export default Home

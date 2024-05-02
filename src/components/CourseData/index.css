@@ -1,0 +1,15 @@
+.course-list-item {
+  min-width: 200px;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+}
+
+.course-image {
+  margin-right: 20px;
+}
+
+.course-name {
+  color: #1e293b;
+  font-weight: 500;
+}

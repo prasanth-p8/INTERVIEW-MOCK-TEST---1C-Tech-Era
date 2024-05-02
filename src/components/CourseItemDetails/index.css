@@ -1,0 +1,56 @@
+.loading-view-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+.failure-view-container {
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.failure-view-image {
+  width: 400px;
+  margin-bottom: 10px;
+}
+
+.failure-view-heading {
+  color: #475569;
+  margin-bottom: 0;
+}
+
+.failure-view-description {
+  color: #64748b;
+}
+
+.failure-view-button {
+  outline: none;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #4656a1;
+  color: #ffffff;
+  padding: 10px 30px 10px 30px;
+  border: none;
+}
+
+.course-detail-container {
+  display: flex;
+}
+
+.course-item-image {
+  width: 350px;
+  margin-right: 20px;
+}
+
+.course-details-subContainer {
+  height: 300px;
+  max-width: 400px;
+}
+
+.course-content {
+  line-height: 2;
+  color: #475569;
+}
